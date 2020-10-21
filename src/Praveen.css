@@ -1,0 +1,11 @@
+.Praveenstyle{
+    width: 100%;
+    height: 100%;
+
+}
+.Praveenstyle ul{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    
+}
