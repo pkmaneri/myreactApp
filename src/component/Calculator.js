@@ -16,7 +16,7 @@ export default class Calculator extends React.Component {
             }
         })
     }
-    calculate(event) {
+    handleCalculate(event) {
         this.setState((prevState) => ({
             text: ((this.state.text) || "") + "",
             result: [...prevState.result, this.state.text + "   "],
