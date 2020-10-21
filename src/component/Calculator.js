@@ -6,15 +6,13 @@ export default class Calculator extends React.Component {
 
     }
 
-    handleName(e) {
+    handleChange(e) {
+        console.log(e)
         const name = (e.target.value);
-
         this.setState(prevState => {
             console.log(prevState)
             return {
                     name: name,
-                   
-                
             }
         })
     }
