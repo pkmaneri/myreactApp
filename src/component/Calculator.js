@@ -1,75 +1,92 @@
 import React from "react"
-export default class Calculator extends React.Component {
+class calculator extends React.Component {
     state = {
         text: "",
-        display: []
+        result: [],
+        prevResult: []
 
     }
 
-    handleChange(e) {
-        console.log(e)
-        const name = (e.target.value);
-        this.setState(prevState => {
-            console.log(prevState)
-            return {
-                    name: name,
-            }
-        })
+    handleChange(event) {
+        const { name, value, type, checked } = event.target
+        this.setState({ [name]: value })
     }
-    handleCalculate(event) {
+
+    calculate(event) {
         this.setState((prevState) => ({
-            text: ((this.state.text) || "") + "",
+            text: (eval(this.state.text) || "") + "",
             result: [...prevState.result, this.state.text + "   "],
-            prevResult: [...prevState.prevResult, + ((this.state.text) || "") + "  "]
+            prevResult: [...prevState.prevResult, + (eval(this.state.text) || "") + "  "]
         })
         )
-
     }
     back(event) {
-        const { type } = event.target
+        const { name, value, type, checked } = event.target
         type === "abc" ? this.setState({ text: this.state.text.slice(0, -1) }) : this.setState({ text: "" })
     }
 
-
     render() {
         return (
-            <div>
-
+            <div >
                 <div className="resultbar">
                     <input style={{ height: "30px", width: "200px", font: "20px" }}
                         name="text"
                         value={this.state.text}
-                        onChange={this.handleChange}
+                        onChange={this.handleChange.bind(this)}
                     />
                 </div>
-                <div className="Calculator">
-                    <button name="text" onClick={this.back} >clear</button>
-                    <button name="text" onClick={this.handleCalculate} value={this.state}>=</button>
-                    <button name="text" onClick={this.handleChange} value={this.state + "+"}>+</button>
+
+                <div className="history">
+                    <h3 style={{ color: "red" }}>{this.state.result} </h3>
+                    <p>{this.state.prevResult}</p>
 
                 </div>
-                <div>
-                    <button name="text" onClick={this.handleChange} value={this.state + "9"}>9</button>
-                    <button name="text" onClick={this.handleChange} value={this.state + "8"}>8</button>
-                    <button name="text" onClick={this.handleChange} value={this.state + "7"}>7</button>
-                    <button name="text" onClick={this.handleChange} value={this.state + "-"}>-</button>
-                </div>
-                <div>
-                    <button name="text" onClick={this.handleChange} value={this.state + "6"}>6</button>
-                    <button name="text" onClick={this.handleChange} value={this.state + "5"}>5</button>
-                    <button name="text" onClick={this.handleChange} value={this.state + "4"}>4</button>
-                    <button name="text" onClick={this.handleChange} value={this.state + "*"}>*</button>
-                </div>
-                <div>
-                    <button name="text" onClick={this.handleChange} value={this.state + "3"}>3</button>
-                    <button name="text" onClick={this.handleChange} value={this.state + "2"}>2</button>
-                    <button name="text" onClick={this.handleChange} value={this.state + "1"}>1</button>
-                    <button name="text" onClick={this.handleChange} value={this.state + "/"}>/</button>
+
+                <div className="button">
+                    <div>
+                        <button name="text" type="abc"
+                            onClick={this.back.bind(this)}
+                        >C</button>
+                        <button name="text" type="dbac" value={this.state.text}
+                            onClick={this.calculate.bind(this)}>=</button>
+                        <button name="text" value={this.state.text + "+"}
+                            onClick={this.handleChange.bind(this)}>+</button>
+                        <button type="adbc" name="text" value={this.state.text + "."}
+                            onClick={this.handleChange.bind(this)}>.</button>
+                    </div>
+                        <button name="text" value={this.state.text + "7"}
+                            onClick={this.handleChange.bind(this)}>7</button>
+                        <button type="adbc" name="text" value={this.state.text + "8"}
+                            onClick={this.handleChange.bind(this)}>8</button>
+                        <button name="text" value={this.state.text + "9"}
+                            onClick={this.handleChange.bind(this)}>9</button>
+                        <button type="adbc" name="text" value={this.state.text + "*"}
+                            onClick={this.handleChange.bind(this)}>*</button>
+                    <div>
+                        <button name="text" value={this.state.text + "4"}
+                            onClick={this.handleChange.bind(this)}>4</button>
+                        <button name="text" value={this.state.text + "5"}
+                            onClick={this.handleChange.bind(this)}>5</button>
+                        <button name="text" value={this.state.text + "6"}
+                            onClick={this.handleChange.bind(this)}>6</button>
+                        <button name="text"
+                            value={this.state.text + "-"}
+                            onClick={this.handleChange.bind(this)}>-</button>
+                    </div>
+                    <div>
+                        <button name="text" value={this.state.text + "1"}
+                            onClick={this.handleChange.bind(this)}>1</button>
+                        <button name="text" value={this.state.text + "2"}
+                            onClick={this.handleChange.bind(this)}>2</button>
+                        <button name="text" value={this.state.text + "3"}
+                            onClick={this.handleChange.bind(this)}>3</button>
+                        <button name="text" value={this.state.text + "/"}
+                            onClick={this.handleChange.bind(this)}>/</button>
+                    </div>
+                    
                 </div>
             </div>
-
         )
     }
 }
-
-
+export default calculator
