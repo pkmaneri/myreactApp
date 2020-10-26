@@ -18,8 +18,7 @@ class calculator extends React.Component {
       
             text: ((this.state.text) || "") + "",
             result: [...prevState.result, this.state.text + "   "],
-            // estint-disable-next-line
-            prevResult: [...prevState.prevResult, + ((this.state.text) || "") + "  "]
+            prevResult: [...prevState.prevResult, + (eval(this.state.text) || "") + "  "]
         })
         )
     }
