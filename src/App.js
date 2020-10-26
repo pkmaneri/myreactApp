@@ -13,7 +13,7 @@ class App extends Component {
   render() {
     return (
       <Router>
-        <div className="Praveenstyle">
+        <div className="container">
           <ul className="navbar-nav mr-auto mt-1mt-lg-0">
             <li className="nav-item active">
               <NavLink className="nav-link " to="/" activeStyle={
@@ -48,7 +48,7 @@ class App extends Component {
               <Product />
             </Route>
             <Route exact path="/calculator">
-              <Calculator/>
+              <Calculator />
             </Route>
 
           </Switch>
