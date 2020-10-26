@@ -50,16 +50,16 @@ class calculator extends React.Component {
                         <button name="text" 
                             onClick={this.back.bind(this)}
                         >C</button>
-                        <button name="text" type="dbac" value={this.state.text}
+                        <button name="text"  value={this.state.text}
                             onClick={this.calculate.bind(this)}>=</button>
                         <button name="text" value={this.state.text + "+"}
                             onClick={this.handleChange.bind(this)}>+</button>
-                        <button type="adbc" name="text" value={this.state.text + "."}
+                        <button  name="text" value={this.state.text + "."}
                             onClick={this.handleChange.bind(this)}>.</button>
                     </div>
                     <button name="text" value={this.state.text + "7"}
                         onClick={this.handleChange.bind(this)}>7</button>
-                    <button type="adbc" name="text" value={this.state.text + "8"}
+                    <button  name="text" value={this.state.text + "8"}
                         onClick={this.handleChange.bind(this)}>8</button>
                     <button name="text" value={this.state.text + "9"}
                         onClick={this.handleChange.bind(this)}>9</button>
