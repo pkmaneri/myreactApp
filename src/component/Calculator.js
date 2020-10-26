@@ -4,7 +4,6 @@ class calculator extends React.Component {
         text: "",
         result: [],
         prevResult: []
-
     }
 
     handleChange(event) {
@@ -14,6 +13,7 @@ class calculator extends React.Component {
 
     calculate(event) {
         this.setState((prevState) => ({
+      
             text: (eval(this.state.text) || "") + "",
             result: [...prevState.result, this.state.text + "   "],
             prevResult: [...prevState.prevResult, + (eval(this.state.text) || "") + "  "]
@@ -36,7 +36,8 @@ class calculator extends React.Component {
                     />
                 </div>
 
-                <div className="history">
+                <div className="calculator his">
+                    <h1>calculator</h1>
                     <h3 style={{ color: "red" }}>{this.state.result} </h3>
                     <p>{this.state.prevResult}</p>
 
@@ -54,14 +55,14 @@ class calculator extends React.Component {
                         <button type="adbc" name="text" value={this.state.text + "."}
                             onClick={this.handleChange.bind(this)}>.</button>
                     </div>
-                        <button name="text" value={this.state.text + "7"}
-                            onClick={this.handleChange.bind(this)}>7</button>
-                        <button type="adbc" name="text" value={this.state.text + "8"}
-                            onClick={this.handleChange.bind(this)}>8</button>
-                        <button name="text" value={this.state.text + "9"}
-                            onClick={this.handleChange.bind(this)}>9</button>
-                        <button type="adbc" name="text" value={this.state.text + "*"}
-                            onClick={this.handleChange.bind(this)}>*</button>
+                    <button name="text" value={this.state.text + "7"}
+                        onClick={this.handleChange.bind(this)}>7</button>
+                    <button type="adbc" name="text" value={this.state.text + "8"}
+                        onClick={this.handleChange.bind(this)}>8</button>
+                    <button name="text" value={this.state.text + "9"}
+                        onClick={this.handleChange.bind(this)}>9</button>
+                    <button type="adbc" name="text" value={this.state.text + "*"}
+                        onClick={this.handleChange.bind(this)}>*</button>
                     <div>
                         <button name="text" value={this.state.text + "4"}
                             onClick={this.handleChange.bind(this)}>4</button>
@@ -83,7 +84,6 @@ class calculator extends React.Component {
                         <button name="text" value={this.state.text + "/"}
                             onClick={this.handleChange.bind(this)}>/</button>
                     </div>
-                    
                 </div>
             </div>
         )
