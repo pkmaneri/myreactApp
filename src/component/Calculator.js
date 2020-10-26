@@ -7,22 +7,24 @@ class calculator extends React.Component {
     }
 
     handleChange(event) {
-        const { name, value, type, checked } = event.target
-        this.setState({ [name]: value })
+        const text = event.target.value
+        this.setState({ 
+            text:text
+          })
     }
 
     calculate(event) {
         this.setState((prevState) => ({
       
-            text: (eval(this.state.text) || "") + "",
+            text: ((this.state.text) || "") + "",
             result: [...prevState.result, this.state.text + "   "],
             prevResult: [...prevState.prevResult, + (eval(this.state.text) || "") + "  "]
         })
         )
     }
     back(event) {
-        const { name, value, type, checked } = event.target
-        type === "abc" ? this.setState({ text: this.state.text.slice(0, -1) }) : this.setState({ text: "" })
+        const text = event.target.value
+         ? this.setState({ text: this.state.text }) : this.setState({ text: "" })
     }
 
     render() {
@@ -45,7 +47,7 @@ class calculator extends React.Component {
 
                 <div className="button">
                     <div>
-                        <button name="text" type="abc"
+                        <button name="text" 
                             onClick={this.back.bind(this)}
                         >C</button>
                         <button name="text" type="dbac" value={this.state.text}
