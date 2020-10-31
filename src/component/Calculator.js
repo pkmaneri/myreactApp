@@ -18,13 +18,17 @@ class calculator extends React.Component {
       
             text: ((this.state.text) || "") + "",
             result: [...prevState.result, this.state.text + "   "],
+            // eslint-disable-next-line
             prevResult: [...prevState.prevResult, + (eval(this.state.text) || "") + "  "]
         })
         )
     }
     back(event) {
         const text = event.target.value
-         ? this.setState({ text: this.state.text }) : this.setState({ text: "" })
+        
+          this.setState({ 
+              text: text
+             })  
     }
 
     render() {
@@ -37,7 +41,6 @@ class calculator extends React.Component {
                         onChange={this.handleChange.bind(this)}
                     />
                 </div>
-
                 <div className="calculator his">
                     <h1>calculator</h1>
                     <h3 style={{ color: "red" }}>{this.state.result} </h3>

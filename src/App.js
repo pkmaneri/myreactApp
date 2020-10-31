@@ -8,6 +8,7 @@ import About from './praveen/About';
 import Home from './praveen/Home';
 import Product from './praveen/Product';
 import Calculator from './component/Calculator';
+import ToDoList from './component/ToDoList';
 
 class App extends Component {
   render() {
@@ -33,6 +34,9 @@ class App extends Component {
             <li className="nav-item active">
               <NavLink className="nav-link" to="/calculator" activeStyle={{ color: "yellow" }} activeClassName="active">Calculator</NavLink>
             </li>
+            <li className="nav-item active">
+              <NavLink className="nav-link" to="/todolist" activeStyle={{ color: "yellow" }} activeClassName="active">ToDoList</NavLink>
+            </li>
           </ul>
           <Switch>
             <Route exact path="/home">
@@ -50,7 +54,9 @@ class App extends Component {
             <Route exact path="/calculator">
               <Calculator />
             </Route>
-
+            <Route exact path="/todolist">
+              <ToDoList />
+            </Route>
           </Switch>
         </div>
       </Router>
