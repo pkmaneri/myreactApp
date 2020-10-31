@@ -21,14 +21,13 @@ export default class ToDoList extends Component {
             }
         })
     }
-    handleRemoveitem(e,index) {
-        let array = e.target.value
-        array.splice(index, 1)
+    handleRemoveitem(index) {
+        let listarray = this.state.lists;
+        listarray.splice(index, 1)
         this.setState({
-            lists: array
+            lists: listarray
         })
     }
-
     render() {
 
         return (
@@ -37,9 +36,9 @@ export default class ToDoList extends Component {
                     Add Item
                     <input type="text" placeholder="type of item" value={this.state.newItem} onChange={this.handleInput.bind(this)}></input>
                     <button onClick={this.addItem.bind(this)}>Add</button>
-                    {this.state.lists.map((itemval, i) => {
+                    {this.state.lists.map((itemval, id) => {
                         return (
-                            <li key={i}>{itemval}
+                            <li key={id}>{itemval}
                                 <button onClick={this.handleRemoveitem.bind(this)}>X</button>
                             </li>
                         )

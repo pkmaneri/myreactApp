@@ -12,7 +12,6 @@ class calculator extends React.Component {
             text:text
           })
     }
-
     calculate(event) {
         this.setState((prevState) => ({
       
@@ -24,13 +23,11 @@ class calculator extends React.Component {
         )
     }
     back(event) {
-        const text = event.target.value
-        
+        const text = event.target.value   
           this.setState({ 
               text: text
              })  
     }
-
     render() {
         return (
             <div >
